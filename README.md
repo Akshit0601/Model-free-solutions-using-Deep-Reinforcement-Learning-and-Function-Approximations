@@ -10,6 +10,11 @@ This algorithm aligns closely with current advancements in multimodal reinforcem
 Recent work in multimodal RL often uses separate encoders for each modality and fuses the outputs either early or late in the network, often through attention or learned gating mechanisms. This algorithm naturally fits into this framework and extends it by focusing on policy learning through direct interaction with the environment. This allows it to adapt across different systems and sensor configurations, providing robustness to noise, partial observability, or missing data. By combining model-free RL with multimodal state representations, this algorithm contributes to the growing field of adaptive, generalizable control systems that learn directly from experience, making it well-suited for real-world stabilization tasks. 
 
 For example, in the CartPole task, the state can be derived from multiple modalities—like vision (camera for pole angle), encoders (cart position), and IMUs (angular velocity). This algorithm can fuse these inputs into a unified representation and learn to balance the pole using actor-critic networks trained purely from interaction. Without relying on known dynamics, it updates its policy based on feedback, making it robust to sensor noise and adaptable to real-world conditions.
+<div align='center'>
+  
+![Alt Text](res/cartpole.gif)
+
+</div>
 
 ## Takes from the project
 This project allowed me to apply and deepen several core concepts from the course in a practical and integrated way. Starting with linear algebra, I used norms and vector operations to measure distances between state vectors, which were essential for clustering and identifying similar states—key to localized learning and control.
@@ -49,16 +54,27 @@ The provided plots illustrate the state responses of a system utilizing an actor
 ---
 
 ### State Response Comparisons
+<div align='center'>
+  
+![Alt Text](res/state_comparison.png)
 
+</div>
 
 - **Red Line:** Represents the natural response of an unstable system (without the model deployed). The state norm increases rapidly, indicating instability and unbounded growth.
 - **Blue Line:** Shows the system response with the model deployed. The state remains bounded and stable, demonstrating the effectiveness of the actor-critic model in stabilizing the system.
 
-#### 2. `state_comparison.jpg`
+<div align='center'>
+  
+![Alt Text](res/state_response.png)
+
+</div>
 - Displays only the model-deployed response. The plot shows persistent oscillatory behavior and does not settle to a steady value, indicating that while the model prevents divergence, it does not fully eliminate oscillations.
 
-#### 3. `state_response2.jpg`
-- This plot shows the model-deployed response after tweaking certain hyperparameters (such as learning rate, norm distance for clusters, or number of epochs).
+<div align='center'>
+  
+![Alt Text](res/state_response2.png)
+
+</div>- This plot shows the model-deployed response after tweaking certain hyperparameters (such as learning rate, norm distance for clusters, or number of epochs).
 - The oscillatory behavior is significantly reduced, and the state response converges more smoothly to a steady value, indicating improved stability and performance after hyperparameter tuning.
 
 ---
