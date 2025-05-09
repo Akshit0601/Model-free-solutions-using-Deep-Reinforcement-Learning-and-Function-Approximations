@@ -39,3 +39,36 @@ To mitigate these issues, the following hyperparameters should be carefully tune
 ### Ideal Solution
 
 The ultimate goal is to stabilize the system using feedback mechanisms that require minimal training time (ensuring fast adaptation) while achieving optimal performance as defined by the cost function. This approach will ensure both efficiency and effectiveness in the system’s operation.
+
+## Analysis of State Responses 
+
+### Overview
+
+The provided plots illustrate the state responses of a system utilizing an actor-critic algorithm, where neural networks serve as function approximators. The focus is on understanding system stability and the effect of hyperparameter tuning on model performance.
+
+---
+
+### State Response Comparisons
+
+
+- **Red Line:** Represents the natural response of an unstable system (without the model deployed). The state norm increases rapidly, indicating instability and unbounded growth.
+- **Blue Line:** Shows the system response with the model deployed. The state remains bounded and stable, demonstrating the effectiveness of the actor-critic model in stabilizing the system.
+
+#### 2. `state_comparison.jpg`
+- Displays only the model-deployed response. The plot shows persistent oscillatory behavior and does not settle to a steady value, indicating that while the model prevents divergence, it does not fully eliminate oscillations.
+
+#### 3. `state_response2.jpg`
+- This plot shows the model-deployed response after tweaking certain hyperparameters (such as learning rate, norm distance for clusters, or number of epochs).
+- The oscillatory behavior is significantly reduced, and the state response converges more smoothly to a steady value, indicating improved stability and performance after hyperparameter tuning.
+
+---
+
+### Inference
+
+- **Without Model:** The system is unstable, as seen from the rapid, unbounded growth in the state norm.
+- **With Model (Initial):** The model stabilizes the system but may introduce oscillations if not properly tuned.
+- **With Model (After Tuning):** Hyperparameter adjustments lead to a smoother, more stable response, reducing oscillations and improving convergence.
+
+---
+
+
